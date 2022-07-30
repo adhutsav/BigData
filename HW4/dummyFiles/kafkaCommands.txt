@@ -1,0 +1,15 @@
+Go to particular directory:
+    bin/zookeeper-server-start.sh config/zookeeper.properties
+
+Start Broker :
+    bin/kafka-server-start.sh config/server.properties
+
+Create new Topic : 
+    bin/kafka-topics.sh --create --topic twitterStreamData --bootstrap-server localhost:9092
+
+Consume Data:
+    bin/kafka-console-consumer.sh --topic tweetsClassification --from-beginning --bootstrap-server localhost:9092
+
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.1,org.elasticsearch:elasticsearch-spark-30_2.12:8.1.2 newSentiment.py > tmp.txt
+
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.1,org.elasticsearch:elasticsearch-spark-30_2.12:8.1.2 newSentiment.py twitterStreamData
